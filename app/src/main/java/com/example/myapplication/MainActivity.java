@@ -28,6 +28,7 @@ import org.opencv.objdetect.CascadeClassifier;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     final int FRONT_CAMERA =  1;
     final int MAX_WIDTH = 320;
     final int MAX_HEIGHT = 240;
+    final Size sz = new Size(100, 100);
 
     static {
         if (!OpenCVLoader.initDebug()) {
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     private void initCameraView() {
         cameraView = findViewById(R.id.cameraView);
-        cameraView.setCameraIndex(FRONT_CAMERA);
+        cameraView.setCameraIndex(REAR_CAMERA);
         cameraView.setCvCameraViewListener(this);
         cameraView.enableView();
         cameraView.enableFpsMeter();
@@ -126,19 +128,24 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         Mat org_img = inputFrame.rgba();
+
         MatOfRect objVectors = new MatOfRect();
-        detector.detectMultiScale(org_img, objVectors);
+        detector.detectMultiScale(org_img, objVectors, 1.8, 5);
+
         if (objVectors.toArray().length == 0) {
             return org_img;
         }
 
-        final Rect rect = objVectors.toArray()[0];
-        int x = rect.x;
-        int y = rect.y;
+        for (Rect rect : objVectors.toArray()) {
+            int x = rect.x;
+            int y = rect.y;
 
-        Imgproc.rectangle(org_img, new Point(x, y),
-                new Point(x + rect.width, y + rect.height),
-                new Scalar(0, 255, 0), 3);
+
+            Imgproc.rectangle(org_img, new Point(x, y),
+                    new Point(x + rect.width, y + rect.height),
+                    new Scalar(0, 255, 0), 3);
+        }
+
         return org_img;
     }
 }

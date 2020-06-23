@@ -20,27 +20,32 @@ The Android Studio IDE will deal those thing for you. You can try to do those th
 
 2. After the IDE has configurated everything, you will have to edit the following code\
 
-`
-    final int REAR_CAMERA = 0;
-    final int FRONT_CAMERA =  1;
-    final int MAX_WIDTH = 320;
-    final int MAX_HEIGHT = 240;
-`
+```
+final int REAR_CAMERA = 0;
+final int FRONT_CAMERA =  1;
+final int MAX_WIDTH = 320;
+final int MAX_HEIGHT = 240;
+```
 
 First is the MAX_WIDTH and MAX_HEIGHT, they are the default width and height of your android camera. It may throw an error if the resolution is not compatable.
 
-`
-    private void initCameraView() {
-        cameraView = findViewById(R.id.cameraView);
-        cameraView.setCameraIndex(FRONT_CAMERA);
-        cameraView.setCvCameraViewListener(this);
-        cameraView.enableView();
-        cameraView.enableFpsMeter();
-        cameraView.setMaxFrameSize(MAX_WIDTH, MAX_HEIGHT);
-    }
-`
+
+
+```
+private void initCameraView() {
+    cameraView = findViewById(R.id.cameraView);
+    cameraView.setCameraIndex(FRONT_CAMERA);
+    cameraView.setCvCameraViewListener(this);
+    cameraView.enableView();
+    cameraView.enableFpsMeter();
+    cameraView.setMaxFrameSize(MAX_WIDTH, MAX_HEIGHT);
+}
+```
+
 Socond is the `cameraView.setCameraIndex()`, your android phone has 2 cameras that the program can use either it is the rear camera or front camera. You can choose to use
 either of them by putting parameter `REAR_CAMERA` or `FRONT_CAMERA`
+
+
 
 3. Click run!!
 
@@ -49,7 +54,8 @@ either of them by putting parameter `REAR_CAMERA` or `FRONT_CAMERA`
 Screenshot
 ------
 These are the screenshot from the application, it will draw the rectangle on the scrren and the fps. There might be the problem when the haar cascade model can not detect any faces
-or detect something that is not face. It is pretty normal with haar cascade model. You can try to change some parameters to improve that.
+or detect something that is not face. It is pretty normal with haar cascade model. You can try to change some parameters to improve that in the following code in `onCameraFrame` function.
 
+`detector.detectMultiScale(org_img, objVectors, 1.8, 5);`
 
-![Image Text](Image Url)
+![](Image Url)
