@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Haar Cascade Camera</string>
+    <string name="enter_connection_string">Enter connection string</string>
+    <string name="connect">CONNECT</string>
+    <string name="camera">Camera</string>
+</resources>
