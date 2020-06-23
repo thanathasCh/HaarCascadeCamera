@@ -58,4 +58,5 @@ or detect something that is not face. It is pretty normal with haar cascade mode
 
 `detector.detectMultiScale(org_img, objVectors, 1.8, 5);`
 
-![](Image Url)
+![](https://github.com/thanathasCh/HaarCascadeCamera/blob/master/screenshots/128313.jpg?raw=true)
+![](https://github.com/thanathasCh/HaarCascadeCamera/blob/master/screenshots/128314.jpg?raw=true)
