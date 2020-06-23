@@ -1,24 +1,24 @@
 Haar Cascade Camera on Android application
 =========
-I have developed this project back in 2018 when I was semohpore. At the moment I just leant how to use haar cascade model to perform face detection, so I was very exited about that.
-At that time, I only knew how to develop android application with Kotlin, so I want to integrate the android knowlege with my new computer vision knowlege. The project consists of 3 parts.
+I have developed this project back in 2018 when I was semaphore. At the moment I just learned how to use haar cascade model to perform face detection, so I was very excited about that.
+At that time, I only knew how to develop android application with Kotlin, so I want to integrate the android knowledge with my new computer vision knowledge. The project consists of 3 parts.
 
 1. Reading Haar Cascade model into the android environment.
 2. Apply the haar cascade model to each frame from the camera.
 3. Drawing the rectangle on the image and send it back to the user.
 
-I have not touch this project since 2018, so I might not be able to remember every detail of it, but I can remember that I used the android extension from openCV and use it to do the
-image processing in android enviroment.
+I have not touched this project since 2018, so I might not be able to remember every detail of it, but I can remember that I used the android extension from openCV and use it to do the
+image processing in android environment.
 
 
 
 How to run:
 ------
 1. You will need the IDE to develop android application. I would not give any installation step over here since I assume you already know how to do those things, and there are plenty of
-installtion tutorial that you can search for. However, I do recommend you to use Android Studio, since it will automaticall detect the configuration that I made between C++ library and Java.
-The Android Studio IDE will deal those thing for you. You can try to do those things by yourself, but I would not recommend.
+installation tutorials that you can search for. However, I do recommend you to use Android Studio, since it will automatically detect the configuration that I made between C++ library and Java.
+The Android Studio IDE will deal those things for you. You can try to do those things by yourself, but I would not recommend it.
 
-2. After the IDE has configurated everything, you will have to edit the following code\
+2. After the IDE has configured everything, you will have to edit the following code\
 
 ```
 final int REAR_CAMERA = 0;
@@ -42,7 +42,7 @@ private void initCameraView() {
 }
 ```
 
-Socond is the `cameraView.setCameraIndex()`, your android phone has 2 cameras that the program can use either it is the rear camera or front camera. You can choose to use
+Second is the `cameraView.setCameraIndex()`, your android phone has 2 cameras that the program can use either it is the rear camera or front camera. You can choose to use
 either of them by putting parameter `REAR_CAMERA` or `FRONT_CAMERA`
 
 
@@ -53,8 +53,8 @@ either of them by putting parameter `REAR_CAMERA` or `FRONT_CAMERA`
 
 Screenshot
 ------
-These are the screenshot from the application, it will draw the rectangle on the scrren and the fps. There might be the problem when the haar cascade model can not detect any faces
-or detect something that is not face. It is pretty normal with haar cascade model. You can try to change some parameters to improve that in the following code in `onCameraFrame` function.
+These are the screenshot from the application, it will draw the rectangle on the screen and the fps. There might be the problem when the haar cascade model can not detect any faces
+or detect something that is not faces. It is pretty normal with haar cascade model. You can try to change some parameters to improve that in the following code in `onCameraFrame` function.
 
 `detector.detectMultiScale(org_img, objVectors, 1.8, 5);`
 
